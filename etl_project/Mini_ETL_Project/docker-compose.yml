@@ -1,0 +1,16 @@
+
+version: "3.8"
+
+services:
+  sql-server:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: sql_etl_project
+    user: root
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong!Passw0rd
+    ports:
+      - "1433:1433"
+    volumes:
+      # Maps your current folder to the container to easily access the .bak file and scripts
+      - ./:/var/opt/mssql/backup
